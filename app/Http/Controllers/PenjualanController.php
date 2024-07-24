@@ -10,6 +10,7 @@ use App\Models\T_Jens;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class PenjualanController extends Controller
@@ -21,7 +22,7 @@ class PenjualanController extends Controller
         $lengthBeli = T_Beli::count() + 1;
         $nomorFaktur = 'TR' . str_pad($lengthBeli, 4, '0', STR_PAD_LEFT);
         $dataBarang = T_Barang::get();
-        $currentDate = date('Y-m-d');
+        $currentDate =Carbon::now()->format("Y-m-d");
         $dataCustomers = T_Customers::get();
         $dataJenis = T_Jens::get();
         if (Session::has("detailBarang")) {
@@ -50,6 +51,10 @@ class PenjualanController extends Controller
         return view('welcome', compact('dataBarang', 'currentDate', 'dataCustomers', 'dataJenis', 'nomorFaktur'));
     }
 
+    public function get_data_transaksi(){
+        $data=DB::table("t_beli")->join("t_dbeli","t_beli.no_faktur","=","t_dbeli.no_faktur")->get();
+        print_r($data);
+    }
 
     public function add_data(Request $request)
     {

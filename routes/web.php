@@ -21,3 +21,4 @@ Route::post("/remove_data",[PenjualanController::class,'remove_data'])->name("re
 Route::post("/clear_data",[PenjualanController::class,'clear_data'])->name("clear_data");
 Route::post("/update_quantity",[PenjualanController::class,'update_quantity'])->name('update_quantity');
 Route::post("/save_data",[PenjualanController::class,'save_data'])->name('save_data');
+Route::get("/get_data_transaksi",[PenjualanController::class,'get_data_transaksi'])->name("get_data_transaksi");

@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" readonly value="{{ $currentDate }}">
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $currentDate }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="customer">Customer</label>
